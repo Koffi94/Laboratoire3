@@ -1,0 +1,6 @@
+language: java
+
+
+script:
+    - echo "We are checking your code..."
+    - mvn clean package
