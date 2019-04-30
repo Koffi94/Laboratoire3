@@ -7,6 +7,7 @@ public class GoToJailSquare extends Square {
         super(name, number);
     }
 
+    @Override
     public void landedOn(Player player) {
         player.setLocation(jailSquare);
     }

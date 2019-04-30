@@ -1,6 +1,8 @@
 package ch.heigvd.gen.core;
 
 
+import ch.heigvd.gen.component.GoSquare;
+import ch.heigvd.gen.component.RegularSquare;
 import ch.heigvd.gen.component.Square;
 
 public class Board {
@@ -24,10 +26,10 @@ public class Board {
     }
 
     private void initializeBoard() {
-        squareTab[0] = new Square("Go", 0);
+        squareTab[0] = new GoSquare("Go", 1);
 
         for (int i = 1; i < squareTab.length; i++) {
-            squareTab[i] = new Square("Square " + i, i);
+            squareTab[i] = new RegularSquare("Square " + i, i);
         }
     }
 }
