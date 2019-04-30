@@ -33,5 +33,22 @@ public class Player {
         this.piece.setLocation(newLocation);
 
         System.out.println("Player : " + name + " is moving from " + oldLocation.getNumber() + " to " + newLocation.getNumber() + "\n");
+
+    }
+
+    public void reduceCash(double amount) {
+
+    }
+
+    public double getNetWorth() {
+        return 0;
+    }
+
+    public void addCash(int amount) {
+
+    }
+
+    public void setLocation(Square square) {
+
     }
 }
