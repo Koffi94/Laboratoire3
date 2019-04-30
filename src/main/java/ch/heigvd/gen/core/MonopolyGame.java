@@ -7,16 +7,15 @@ public class MonopolyGame {
     private final int NUMBERS_OF_ROUNDS = 20;
     private final int NUMBERS_OF_SQUARES = 40;
 
-    private Die[] dies;
+    private Cup cup;
     private Player[] players;
     private Board board;
 
     public MonopolyGame(int numberOfPlayers) {
-        this.dies = new Die[NUMBERS_OF_DIES];
+        this.cup = new Cup(NUMBERS_OF_DIES);
         this.players = new Player[numberOfPlayers];
         this.board = new Board(NUMBERS_OF_SQUARES);
 
-        initializeDies();
         initializePlayers();
     }
 
@@ -36,14 +35,7 @@ public class MonopolyGame {
 
     private void initializePlayers() {
         for (int i = 0; i < players.length; i++) {
-            players[i] = new Player("User" + (i + 1), board, dies);
+            players[i] = new Player("User" + (i + 1), board, cup);
         }
     }
-
-    private void initializeDies() {
-        for (int i = 0; i < dies.length; i++) {
-            dies[i] = new Die(0);
-        }
-    }
-
 }

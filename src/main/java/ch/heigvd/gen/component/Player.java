@@ -4,51 +4,48 @@ import ch.heigvd.gen.core.Board;
 
 public class Player {
     private String name;
-    private Piece piece;
     private Board board;
-    private Die[] die;
+    private Cup cup;
+    private double cash;
+    private Square location;
 
-    public Player(String name, Board board, Die[] die) {
+    public Player(String name, Board board, Cup cup) {
         this.name = name;
-        this.piece = new Piece(new Square("Go", 0));
         this.board = board;
-        this.die = die;
+        this.cup = cup;
+        this.cash = 1500;
+        this.location = new GoSquare("Go", 1);
     }
 
     public void takeTurn() {
-        int fvTotal = 0;
-
-        System.out.println("Player : " + name);
-
-        // Rolling
-        for (Die d : die) {
-            d.roll();
-            fvTotal += d.getFaceValue();
-            System.out.println("Roll   : " + d.getFaceValue());
-        }
+        cup.roll();
+        System.out.println(name + " rolled " + cup.getTotal());
 
         // Moving
-        Square oldLocation = piece.getLocation();
-        Square newLocation = board.getSquare(oldLocation, fvTotal);
-        this.piece.setLocation(newLocation);
+        Square oldLocation = this.location;
+        Square newLocation = board.getSquare(oldLocation, cup.getTotal());
+        this.location = newLocation;
 
-        System.out.println("Player : " + name + " is moving from " + oldLocation.getNumber() + " to " + newLocation.getNumber() + "\n");
-
+        System.out.println(name + " is moving from " + oldLocation.getNumber() + " to " + newLocation.getNumber() + "\n");
     }
 
-    public void reduceCash(double amount) {
+    public void addCash(double amount) {
+        this.cash += amount;
+    }
 
+    public void reduceCash(double amount) throws Exception {
+        if (this.cash - amount < 0) {
+            throw new Exception("Not enough money");
+        }
+
+        this.cash -= amount;
     }
 
     public double getNetWorth() {
-        return 0;
-    }
-
-    public void addCash(int amount) {
-
+        return this.cash;
     }
 
     public void setLocation(Square square) {
-
+        this.location = square;
     }
 }
