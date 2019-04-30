@@ -5,6 +5,7 @@ public class RegularSquare extends Square {
         super(name, number);
     }
 
+    @Override
     public void landedOn(Player player) {
 
     }
