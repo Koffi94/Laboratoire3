@@ -19,14 +19,16 @@ public class Player {
 
     public void takeTurn() {
         cup.roll();
-        System.out.println(name + " rolled " + cup.getTotal());
+        System.out.println(name + " rolled " + cup.getTotal() + " , cash : " + this.getNetWorth());
 
         // Moving
         Square oldLocation = this.location;
         Square newLocation = board.getSquare(oldLocation, cup.getTotal());
         this.location = newLocation;
 
-        System.out.println(name + " is moving from " + oldLocation.getNumber() + " to " + newLocation.getNumber() + "\n");
+        System.out.print(name + " is moving from " + oldLocation.getNumber() + " to " + newLocation.getNumber() + " on");
+        this.location.landedOn(this);
+        System.out.println();
     }
 
     public void addCash(double amount) {
