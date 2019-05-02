@@ -7,6 +7,6 @@ public class RegularSquare extends Square {
 
     @Override
     public void landedOn(Player player) {
-
+        System.out.println(" Regular Square");
     }
 }

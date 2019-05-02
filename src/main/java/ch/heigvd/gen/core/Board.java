@@ -1,9 +1,9 @@
 package ch.heigvd.gen.core;
 
 
-import ch.heigvd.gen.component.GoSquare;
-import ch.heigvd.gen.component.RegularSquare;
-import ch.heigvd.gen.component.Square;
+import ch.heigvd.gen.component.*;
+
+import java.util.Random;
 
 public class Board {
     private Square[] squareTab;
@@ -26,10 +26,20 @@ public class Board {
     }
 
     private void initializeBoard() {
-        squareTab[0] = new GoSquare("Go", 1);
+        squareTab[0] = new GoSquare("Go", 0);
+        JailSquare jail = new JailSquare("", 0);
 
         for (int i = 1; i < squareTab.length; i++) {
-            squareTab[i] = new RegularSquare("Square " + i, i);
+            if (i == 11) {
+                squareTab[i] = new JailSquare("Jail " + i, i);
+                jail = (JailSquare) squareTab[i];
+            } else if (i == 31) {
+                squareTab[i] = new GoToJailSquare("Go To Jail " + i, i, jail);
+            } else if (i == 5) {
+                squareTab[i] = new IncomeTaxSquare("Income Tax Square " + i, i);
+            } else {
+                squareTab[i] = new RegularSquare("Regular Square " + i, i);
+            }
         }
     }
 }

@@ -7,6 +7,6 @@ public class JailSquare extends Square {
 
     @Override
     public void landedOn(Player player) {
-
+        System.out.println(" Jail Square");
     }
 }
