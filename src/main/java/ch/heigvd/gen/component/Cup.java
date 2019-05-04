@@ -8,12 +8,20 @@ public class Cup {
         intitializeDies(numberOfDies);
     }
 
+    /**
+     * Roll all Die inside the Cup.
+     */
     public void roll() {
         for (Die d : cup) {
             d.roll();
         }
     }
 
+    /**
+     * Compute the sum of the face value of each Die in the Cup.
+     *
+     * @return
+     */
     public int getTotal() {
         int total = 0;
         for (Die d : cup) {
@@ -22,6 +30,11 @@ public class Cup {
         return total;
     }
 
+    /**
+     * Initialize Die at a fixed starting face value.
+     *
+     * @param numberOfDies the number of die to initialize
+     */
     private void intitializeDies(int numberOfDies) {
         for (int i = 0; i < numberOfDies; i++) {
             cup[i] = new Die(0);

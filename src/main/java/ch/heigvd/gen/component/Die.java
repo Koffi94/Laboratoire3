@@ -19,6 +19,9 @@ public class Die {
         this.faceValue = faceValue;
     }
 
+    /**
+     * Compute a random number and assign it to the face value.
+     */
     public void roll() {
         faceValue = rand.nextInt(6) + 1;
     }

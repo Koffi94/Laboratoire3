@@ -13,5 +13,10 @@ public abstract class Square {
         return number;
     }
 
+    /**
+     * Make a Player land on the Square. Effects depend on which type of Square the Player is on.
+     *
+     * @param player the Player landing on the Square
+     */
     public abstract void landedOn(Player player);
 }

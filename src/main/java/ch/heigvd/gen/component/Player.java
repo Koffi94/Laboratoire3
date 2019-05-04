@@ -17,6 +17,9 @@ public class Player {
         this.location = new GoSquare("Go", 1);
     }
 
+    /**
+     * Play the turn of a the Player, a turn consist of rolling all Die and then moving to another Square.
+     */
     public void takeTurn() {
         cup.roll();
         System.out.println(name + " rolled " + cup.getTotal() + " , cash : " + this.getNetWorth());
@@ -31,10 +34,20 @@ public class Player {
         System.out.println();
     }
 
+    /**
+     * Add a certain amount of cash to the Player.
+     *
+     * @param amount the amount of cash to add
+     */
     public void addCash(double amount) {
         this.cash += amount;
     }
 
+    /**
+     * Remove a certain amount of cash to the Player.
+     * @param amount the amount of cash to remove
+     * @throws Exception if the cash is going to go below 0
+     */
     public void reduceCash(double amount) throws Exception {
         if (this.cash - amount < 0) {
             throw new Exception("Not enough money");
