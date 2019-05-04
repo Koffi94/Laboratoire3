@@ -3,8 +3,6 @@ package ch.heigvd.gen.core;
 
 import ch.heigvd.gen.component.*;
 
-import java.util.Random;
-
 public class Board {
     private Square[] squareTab;
 
@@ -13,6 +11,13 @@ public class Board {
         initializeBoard();
     }
 
+    /**
+     * Compute the new Square after a Dice roll.
+     *
+     * @param oldLocation the actual Square location
+     * @param facevalueTotal the value of both Die
+     * @return
+     */
     public Square getSquare(Square oldLocation, int facevalueTotal) {
         if ((oldLocation.getNumber() + facevalueTotal >= squareTab.length)) {
             return squareTab[squareTab.length - 1];
@@ -25,6 +30,10 @@ public class Board {
         return squareTab[oldLocation.getNumber() + facevalueTotal];
     }
 
+    /**
+     * Initialize the board by placing specific Square at a fixed position and filling the rest of the Square with
+     * Regular Square.
+     */
     private void initializeBoard() {
         squareTab[0] = new GoSquare("Go", 0);
         JailSquare jail = new JailSquare("", 0);

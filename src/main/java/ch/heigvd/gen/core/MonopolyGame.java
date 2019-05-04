@@ -19,6 +19,9 @@ public class MonopolyGame {
         initializePlayers();
     }
 
+    /**
+     * Launch a MonopolyGame, play the turn of each Player, for each rounds.
+     */
     public void playGame() {
         for (int i = 0; i < NUMBERS_OF_ROUNDS; i++) {
             System.out.println("====== Round number : " + (i + 1) + " ======");
@@ -29,10 +32,18 @@ public class MonopolyGame {
         }
     }
 
+    /**
+     * Play the turn of the Player
+     *
+     * @param indexPlayer the index of the Player
+     */
     private void playRound(int indexPlayer) {
         players[indexPlayer].takeTurn();
     }
 
+    /**
+     * Initialize all players.
+     */
     private void initializePlayers() {
         for (int i = 0; i < players.length; i++) {
             players[i] = new Player("User" + (i + 1), board, cup);
