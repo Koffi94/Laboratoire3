@@ -33,7 +33,7 @@ public class Cup {
     /**
      * Initialize Die at a fixed starting face value.
      *
-     * @param numberOfDies
+     * @param numberOfDies the number of die to initialize
      */
     private void intitializeDies(int numberOfDies) {
         for (int i = 0; i < numberOfDies; i++) {
